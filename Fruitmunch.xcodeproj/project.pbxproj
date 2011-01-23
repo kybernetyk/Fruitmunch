@@ -158,6 +158,7 @@
 		03C8388B12EC765000C10D7C /* ParticleSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C8383112EC764F00C10D7C /* ParticleSystem.mm */; };
 		03C8388C12EC765000C10D7C /* RenderSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C8383412EC764F00C10D7C /* RenderSystem.mm */; };
 		03C8388D12EC765000C10D7C /* SoundSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C8383712EC764F00C10D7C /* SoundSystem.mm */; };
+		03C838AE12EC769600C10D7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C838AD12EC769600C10D7C /* SystemConfiguration.framework */; };
 		03D1127C12C627EC001934C6 /* cb1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03D1127712C627EC001934C6 /* cb1.wav */; };
 		03D1127D12C627EC001934C6 /* cb2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03D1127812C627EC001934C6 /* cb2.wav */; };
 		03D1127E12C627EC001934C6 /* cb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03D1127912C627EC001934C6 /* cb3.wav */; };
@@ -442,6 +443,7 @@
 		03C8383612EC764F00C10D7C /* SoundSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSystem.h; sourceTree = "<group>"; };
 		03C8383712EC764F00C10D7C /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		03C8383812EC764F00C10D7C /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		03C838AD12EC769600C10D7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		03D1127712C627EC001934C6 /* cb1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cb1.wav; sourceTree = "<group>"; };
 		03D1127812C627EC001934C6 /* cb2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cb2.wav; sourceTree = "<group>"; };
 		03D1127912C627EC001934C6 /* cb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cb3.wav; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				032A173D12AC56000046B89E /* GameKit.framework in Frameworks */,
 				03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */,
 				031139B512CB8E9500253B13 /* MediaPlayer.framework in Frameworks */,
+				03C838AE12EC769600C10D7C /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1221,6 +1224,7 @@
 				039967A012A8234D00D0C56D /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				03C838AD12EC769600C10D7C /* SystemConfiguration.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
