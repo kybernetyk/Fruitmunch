@@ -21,20 +21,20 @@ namespace game
 		
 	}
 	
-	mx3::Entity *MenuScene::create_button (vector2D pos, const char *text)
+	Button MenuScene::create_button (vector2D pos, const char *text)
 	{
 		Entity *ent = _entityManager->createNewEntity();
-
+		
 		Position *posi = _entityManager->addComponent <Position> (ent);
 		posi->x = pos.x;
 		posi->y = pos.y;
-
+		
 		Sprite *sprite = _entityManager->addComponent <Sprite> (ent);
 		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("buy_button.png");
 		sprite->anchorPoint = vector2D_make(0.5, 0.5);
 		sprite->z = 4.0;
-
-
+		
+		
 		Entity *capt = _entityManager->createNewEntity();
 		
 		Position *position = _entityManager->addComponent <Position> (capt);
@@ -48,8 +48,11 @@ namespace game
 		label->text = text;
 		label->z = 6.0;
 		
+		Button ret;
+		ret.btn_sprite = ent;
+		ret.btn_caption = capt;
 		
-		return ent;
+		return ret;
 	}
 	
 	void MenuScene::init ()
@@ -88,10 +91,33 @@ namespace game
 		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-80 - i * 60), "Puzzle");
 
 		i = 5;
-		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Sound");
+		sound_button = create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Sound");
 		i = 6;
-		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Music");
+		music_button = create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Music");
 	
+		if (SoundSystem::sfx_vol <= 0.0)
+		{	
+			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(sound_button.btn_caption);
+			lbl->text = "Sound On";
+		}
+		else
+		{	
+			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(sound_button.btn_caption);
+			lbl->text = "Sound Off";
+		}
+		
+		if (SoundSystem::music_vol <= 0.0)
+		{	
+			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(music_button.btn_caption);
+			lbl->text = "Music On";
+		}
+		else
+		{
+			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(music_button.btn_caption);
+			lbl->text = "Music Off";
+		}
+		
+		
 	}
 	
 	void MenuScene::end ()
@@ -140,9 +166,17 @@ namespace game
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	
 				if (SoundSystem::sfx_vol <= 0.0)
+				{	
 					mx3::SoundSystem::set_sfx_volume (0.9);	
+					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(sound_button.btn_caption);
+					lbl->text = "Sound Off";
+				}
 				else
+				{	
 					mx3::SoundSystem::set_sfx_volume (0.0);	
+					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(sound_button.btn_caption);
+					lbl->text = "Sound On";
+				}
 				
 				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 				[defs setFloat: (SoundSystem::sfx_vol) forKey: @"sfx_volume"];
@@ -156,9 +190,16 @@ namespace game
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 
 				if (SoundSystem::music_vol <= 0.0)
+				{	
 					mx3::SoundSystem::set_music_volume (0.5);	
+					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(music_button.btn_caption);
+					lbl->text = "Music Off";
+				}
 				else
-					mx3::SoundSystem::set_music_volume (0.0);	
+				{	mx3::SoundSystem::set_music_volume (0.0);	
+					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(music_button.btn_caption);
+					lbl->text = "Music On";
+				}
 				
 				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 				[defs setFloat: (SoundSystem::music_vol) forKey: @"music_volume"];

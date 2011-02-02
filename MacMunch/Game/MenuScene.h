@@ -28,6 +28,12 @@
 
 namespace game 
 {
+	struct Button;
+//	{
+//		Entity *btn_sprite;
+//		Entity *btn_caption;
+//	};
+	
 	class MenuScene : public mx3::Scene
 	{
 	public:
@@ -46,12 +52,16 @@ namespace game
 			return SCENE_TYPE_MAIN_MENU;
 		}
 		
-		mx3::Entity *create_button (vector2D pos, const char *text);
+		Button create_button (vector2D pos, const char *text);
 		
 		~MenuScene();
 	protected:
 		mx3::EntityManager *_entityManager;
 		mx3::RenderSystem *_renderSystem;
 		game::StarSystem *_starSystem;
+		
+		Button sound_button;
+		Button music_button;
+		
 	};
 }

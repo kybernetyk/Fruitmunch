@@ -28,13 +28,6 @@ using namespace mx3;
 
 namespace game 
 {
-
-	struct Button
-	{
-		Entity *btn_sprite;
-		Entity *btn_caption;
-	};
-	
 	class GameScene : public mx3::Scene
 	{
 	public:

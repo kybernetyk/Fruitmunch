@@ -15,7 +15,12 @@ using namespace mx3;
 
 namespace game 
 {
-
+	struct Button
+	{
+		Entity *btn_sprite;
+		Entity *btn_caption;
+	};
+	
 #define PREP_STATE_READY 0x00
 #define PREP_STATE_3 0x01
 #define PREP_STATE_2 0x02
